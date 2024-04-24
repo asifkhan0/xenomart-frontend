@@ -1,12 +1,13 @@
-"use client"
+"use client";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from "@clerk/nextjs";
 import { CartContext, WishlistContext } from "./_context/CartContext";
 import { useState } from "react";
-import GlobalApi from "./_utils/GlobalApi"
+import GlobalApi from "./_utils/GlobalApi";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Outfit({ subsets: ["latin"] });
 
@@ -25,9 +26,8 @@ export default function RootLayout({ children }) {
         <WishlistContext.Provider value={{ wishlist, setWishlist }}>
           <html lang="en">
             <body className={`${inter.className} bg-gray-200`}>
-              <Header />
-              {children}
-              <Footer />
+              <Analytics />
+              <Header /> {children} <Footer />
             </body>
           </html>
         </WishlistContext.Provider>
