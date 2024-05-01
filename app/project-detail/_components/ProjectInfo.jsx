@@ -18,6 +18,8 @@ const ProjectInfo = ({ product }) => {
   const { cart, setCart } = useContext(CartContext);
   const { wishlist, setWishlist } = useContext(WishlistContext);
 
+
+  // add to cart
   const onAddToCart = () => {
     debugger;
     if (!user) {
@@ -52,6 +54,7 @@ const ProjectInfo = ({ product }) => {
     }
   };
 
+  // add to wishlist
   const onAddToWishlist = () => {
     if (!user) {
       router.push("/sign-in");
@@ -59,21 +62,19 @@ const ProjectInfo = ({ product }) => {
     } else {
       const data = {
         data: {
-          userName: user.fullName,
           email: user.primaryEmailAddress.emailAddress,
-          product: product?.id,
+          product: product?.id
         },
       };
 
       GlobalApi.addToWishList(data).then(
         (res) => {
           if (res) {
-            router.push("/wishlist");
             setWishlist((wishlist) => [
               ...wishlist,
               {
                 id: res.data.data.id,
-                product: product,
+                product: product
               },
             ]);
           }
@@ -115,15 +116,13 @@ const ProjectInfo = ({ product }) => {
           <div className="flex gap-2">
             <button
               className="flex gap-2 p-3 bg-blue-600 hover:bg-blue-700 px-10 mt-5 text-white rounded-lg "
-              onClick={() => onAddToCart(product)}
-            >
+              onClick={() => onAddToCart(product)}>
               <IoCartOutline className="text-[23px] " /> Add to Cart
             </button>
 
             <button
               className="flex gap-2 p-3 bg-blue-600 hover:bg-blue-700 px-10 mt-5 text-white rounded-lg "
-              onClick={() => onAddToWishlist(product)}
-            >
+              onClick={() => onAddToWishlist(product)}>
               <FaRegHeart className="text-[23px] " /> Add to wishlist
             </button>
           </div>

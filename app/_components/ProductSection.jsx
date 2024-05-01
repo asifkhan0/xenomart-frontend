@@ -12,17 +12,18 @@ const ProductSection = () => {
 
   const getLatestProducts_ = () => {
     GlobalApi.getLatestProducts().then((res) => {
+      console.log(res.data.data);
       setProductList(res.data.data);
     });
   };
 
   const filterProductList = (category) => {
     const result = productList.filter(
-      (item) => item.attributes.categories == category,
+      (item) => item.attributes.category == category,
     );
     return result;
   };
-  debugger;
+
   return (
     productList && (
       <div className="mx- md:mx-4 my-5">
@@ -42,7 +43,7 @@ const ProductSection = () => {
         <div className="shirt-section bg-white px-5 py-4 my-5">
           <h2 className="font-bold text-[22px] my-3 text-[#263248]">
             Shirts
-            <span className="font-bold float-right text-[14px] flex text-[#F49404] hover:text-[#f49404c9]cursor-pointer items-center ">
+            <span className="font-bold float-right text-[14px] flex text-[#F49404] hover:text-[#f49404c9]cursor-pointer items-center">
               View All Collection
               <FaArrowRight className="h-4 ms-2" />
             </span>
@@ -53,7 +54,7 @@ const ProductSection = () => {
         {/* Icons pack*/}
         <div className="shirt-section bg-white px-5 py-4 my-5">
           <h2 className="font-bold text-[22px] my-3 text-[#263248]">
-            T-shirt{" "}
+            T-shirt
             <span className="font-bold float-right text-[14px] flex text-[#F49404] hover:text-[#f49404c9] cursor-pointer items-center ">
               View All Collection
               <FaArrowRight className="h-4 ms-2" />
