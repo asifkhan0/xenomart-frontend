@@ -21,7 +21,6 @@ const ProjectInfo = ({ product }) => {
   const { wishlist, setWishlist } = useContext(WishlistContext);
 
   const calculateDiscountPercentage = (originalPrice, discountedPrice = 1) => {
-    debugger;
     const discountPercentage = (
       (1 - discountedPrice / originalPrice) *
       100
@@ -100,7 +99,7 @@ const ProjectInfo = ({ product }) => {
   return (
     <div>
       {product ? (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 p-5 lg:p-0">
           <ToastContainer />
           <h4 className="brand-title text-lg font-bold text-gray-500 uppercase">
             {product?.attributes?.brand}
@@ -146,16 +145,16 @@ const ProjectInfo = ({ product }) => {
               )}
             </h2>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-5 lg:gap-2">
             <button
-              className="flex gap-2 p-3 bg-blue-600 hover:bg-blue-700 px-10 mt-5 text-white rounded-lg "
+              className="flex gap-2 p-3 bg-blue-600 hover:bg-blue-700 px-6 lg:px-10 mt-5 text-white rounded-lg "
               onClick={() => onAddToCart(product)}
             >
               <IoCartOutline className="text-[23px] " /> Add to Cart
             </button>
 
             <button
-              className="flex gap-2 p-3 bg-blue-600 hover:bg-blue-700 px-10 mt-5 text-white rounded-lg "
+              className="flex gap-2 p-3 bg-blue-600 hover:bg-blue-700 px-6 lg:px-10 mt-5 text-white rounded-lg "
               onClick={() => onAddToWishlist(product)}
             >
               <FaRegHeart className="text-[23px] " /> Add to wishlist

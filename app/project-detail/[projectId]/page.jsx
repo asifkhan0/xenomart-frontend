@@ -39,7 +39,7 @@ debugger
   };
 
   return (
-    <div className="p-5 py-10 md:py-2 px-10 md:px-2">
+    <div className="lg:p-5 lg:py-10 md:py-2 lg:px-10 md:px-2">
       <div className="bg-white">
         <Breadcrumbs path={path} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:p-14 sm:gap-10 bg-white shadow-sm">

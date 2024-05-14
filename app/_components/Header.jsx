@@ -167,16 +167,16 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="category-list bg-primaryCustom px-10 py-2">
-          <ul className="flex gap-10 text-white capitalize">
+        <div className="category-list bg-primaryCustom px-5 lg:px-10 py-2">
+          <ul className="flex flex-wrap gap-6 lg:gap-10 text-white capitalize">
             <li className="hover:text-secondaryCustom"><a href="#">Men</a></li>
             <li className="hover:text-secondaryCustom"><a href="#">Women</a></li>
             <li className="hover:text-secondaryCustom"><a href="#">Jeans</a></li>
             <li className="hover:text-secondaryCustom"><a href="#">pant</a></li>
             <li className="hover:text-secondaryCustom"><a href="#">t-shirt</a></li>
             <li className="hover:text-secondaryCustom"><a href="#">shirt</a></li>
-            <li className="hover:text-secondaryCustom"><a href="#">Trending</a></li>
-            <li className="hover:text-secondaryCustom"><a href="#">offer</a></li>
+            <li className="hover:text-secondaryCustom hidden lg:block"><a href="#">Trending</a></li>
+            <li className="hover:text-secondaryCustom hidden lg:block"><a href="#">offer</a></li>
           </ul>
         </div>
       </header>

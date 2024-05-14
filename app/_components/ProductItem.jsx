@@ -33,7 +33,7 @@ const calculateDiscountPercentage = (originalPrice, discountedPrice=1) => {
                 {product?.attributes?.title}
               </h2>
               <div className="price-section font-medium">
-                <h2 className="flex gap-3 text-base">
+                <h2 className="flex lg:gap-3 md:gap-3  text-base flex-col md:flex-row lg:flex-row">
                   Rs. {product.attributes?.offerPrice}
                   {product.attributes?.offerPrice && (
                     <span className="text-green-600">

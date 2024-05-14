@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../_context/Context";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { useUser } from "@clerk/nextjs";
+import StarRating from "../_components/StarRating";
 
 const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -78,17 +79,17 @@ const Cart = () => {
                       className="size-24 rounded object-cover"
                     />
 
-                    <div className="flex-initial w-[75%]">
+                    <div className="flex flex-col gap-0 lg:gap-2 w-[75%]">
+                      <div className="text-gray-500 font-bold text-sm">{item?.product?.attributes?.brand}</div>
                       <h3 className="text-sm text-gray-900 hover:text-blue-600">
                         {item?.product?.attributes?.title}
                       </h3>
-                      <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
-                        <div>
-                          <dt className="inline">
-                            {item?.product?.attributes?.product?.category}
-                          </dt>
+                      <div className="item_rating">
+                        <StarRating rating={item?.product?.attributes?.rating}/>
                         </div>
-                      </dl>
+                      <div className="item_category uppercase text-sm">
+                        <span className="text-gray-500 font-medium">category: </span>{item?.product?.attributes?.category}
+                        </div>
                     </div>
 
                     <div className="flex flex-initial w-[25%] items-center justify-end gap-2">

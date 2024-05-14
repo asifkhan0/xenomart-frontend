@@ -6,6 +6,7 @@ import { WishlistContext } from "../_context/Context";
 import { MdDelete } from "react-icons/md";
 import Link from "next/link";
 import SkeltonAddCard from "../_components/SkeltonAddCard";
+import StarRating from "../_components/StarRating";
 
 const Wishlist = () => {
   const { wishlist, setWishlist } = useContext(WishlistContext);
@@ -47,17 +48,17 @@ const Wishlist = () => {
       },
       (error) => {
         console.log(error);
-      },
+      }
     );
   }
 
   if (loading) {
-    return <SkeltonAddCard/>;
+    return <SkeltonAddCard />;
   }
 
   return (
     <div className="section m-2 p-4">
-      <div className="wishlist-section bg-white shadow-white grid grid-cols-12">
+      <div className="wishlist-section bg-white shadow-white grid lg:grid-cols-12">
         {wishlist.map((item, index) => (
           <div
             className="shirt-section border col-span-6 lg:col-span-12 md:col-span-12 p-3 lg:px-5  lg:py-4 flex h-[8rem] lg:h-[10rem]"
@@ -74,11 +75,21 @@ const Wishlist = () => {
                   alt=""
                 />
               </div>
-              <div className="content hover:text-blue-500 p-2 pt-0 lg:p-4 lg:ps-6 col-span-9 lg:col-span-11">
-                <h2>{item.product.attributes.title}</h2>
+              <div className="content col-span-9 flex flex-col lg:gap-2 lg:col-span-11 p-2 pt-0 lg:p-0 lg:ps-6">
+                <div className="item_brand text-gray-500 uppercase text-base font-bold">
+                  {item.product.attributes.brand}
+                </div>
+                <div className="content hover:text-blue-500 hover:underline">
+                  <h2>{item.product.attributes.title}</h2>
+                </div>
+                <div className="item_rating lg:block hidden"><StarRating rating={item.product.attributes.rating}/></div>
+                <div className="item_price">Rs. {item.product.attributes.price}</div>
               </div>
             </Link>
-            <div className="flex justify-end text-xl  lg:text-2xl cursor-pointer hover:text-red-600" onClick={()=> deletWishListItem_(item.id)}>
+            <div
+              className="flex justify-end text-xl  lg:text-2xl cursor-pointer hover:text-red-600"
+              onClick={() => deletWishListItem_(item.id)}
+            >
               <MdDelete />
             </div>
           </div>
