@@ -52,13 +52,13 @@ const ProductSection = () => {
             New Arrival
             <span
               className="font-bold float-right text-[14px] flex text-secondaryCustom hover:text-[#f49404c9] cursor-pointer items-center"
-              onClick={() => newCollection_("new arrival")}
+              onClick={() => viewAllCollection("new arrival")}
             >
               View All Collection
               <FaArrowRight className="h-4 ms-2" />
             </span>
           </h2>
-          <ProductList productList={filterProductList("new arrival")} />
+          <ProductList productList={newCollection_("new arrival")} />
         </div>
 
         {/* source code product */}

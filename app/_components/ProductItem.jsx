@@ -5,17 +5,23 @@ import { BiCategory } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 
 const ProductItem = ({ product }) => {
+  const calculateDiscountPercentage = (originalPrice, discountedPrice = 1) => {
+    const discountPercentage = (
+      (1 - discountedPrice / originalPrice) *
+      100
+    ).toFixed(2);
 
-const calculateDiscountPercentage = (originalPrice, discountedPrice=1) => {
-  debugger
-  const discountPercentage = ((1 - (discountedPrice / originalPrice)) * 100).toFixed(2);
-
-  return Math.round(discountPercentage);
-};
+    return Math.round(discountPercentage);
+  };
 
   return (
     <Link href={"/project-detail/" + product.id}>
-      <div className="cursor-pointer hover:shadow-lg max-h-[24.5rem] overflow-hidden">
+      <div className="cursor-pointer relative hover:shadow-lg max-h-[24.5rem] overflow-hidden">
+        {product?.attributes?.collectionType.includes("new arrival") && (
+          <span class="item_badge absolute text-[10px] z-999 capitalize top-3 right-3 flex items-center px-2 py-1 bg-green-200 rounded-full font-semibold text-green-600">
+            new arrival
+          </span>
+        )}
         <div className="group p-2">
           <Image
             src={product?.attributes?.banner?.data?.attributes?.url}
@@ -40,7 +46,11 @@ const calculateDiscountPercentage = (originalPrice, discountedPrice=1) => {
                       <del className="text-gray-500 text-sm me-3">
                         Rs. {product.attributes?.price}
                       </del>
-                      {calculateDiscountPercentage(product?.attributes?.price, product?.attributes?.offerPrice)}% off
+                      {calculateDiscountPercentage(
+                        product?.attributes?.price,
+                        product?.attributes?.offerPrice
+                      )}
+                      % off
                     </span>
                   )}
                 </h2>
