@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import { CartContext } from "../_context/CartContext";
+import { CartContext } from "../_context/Context";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { useUser } from "@clerk/nextjs";
 
@@ -57,9 +57,8 @@ const Cart = () => {
   };
   
   return (
-    <section>
-      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <div className="mx-auto max-w-3xl">
+      <div className="m-3 bg-white shadow-sm max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <div className="mx-auto max-w-4xl">
           <header className="text-center">
             <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">
               Your Cart
@@ -67,23 +66,22 @@ const Cart = () => {
           </header>
 
           <div className="mt-8">
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {cart.length > 0 &&
                 cart.map((item, index) => (
-                  <li className="flex items-center gap-4" key={index}>
+                  <li className="flex items-center border gap-4 p-2 cursor-pointer hover:border-blue-600" key={index}>
                     <img
                       src={
                         item?.product?.attributes?.banner?.data?.attributes?.url
                       }
                       alt=""
-                      className="size-16 rounded object-cover"
+                      className="size-24 rounded object-cover"
                     />
 
-                    <div className="flex-initial w-[80%]">
-                      <h3 className="text-sm text-gray-900">
+                    <div className="flex-initial w-[75%]">
+                      <h3 className="text-sm text-gray-900 hover:text-blue-600">
                         {item?.product?.attributes?.title}
                       </h3>
-
                       <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                         <div>
                           <dt className="inline">
@@ -93,7 +91,7 @@ const Cart = () => {
                       </dl>
                     </div>
 
-                    <div className="flex flex-initial w-[20%] items-center justify-end gap-2">
+                    <div className="flex flex-initial w-[25%] items-center justify-end gap-2">
                       <div>
                         <dt className="inline font-bold">
                           Rs. {item?.product?.attributes?.price}
@@ -134,7 +132,7 @@ const Cart = () => {
                   </div>
                 </dl>
 
-                <div className="flex justify-end">
+                {/* <div className="flex justify-end">
                   <span className="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +153,7 @@ const Cart = () => {
                       2 Discounts Applied
                     </p>
                   </span>
-                </div>
+                </div> */}
 
                 <div className="flex justify-end">
                   <a
@@ -174,7 +172,6 @@ const Cart = () => {
           </div>
         </div>
       </div>
-    </section>
   );
 };
 

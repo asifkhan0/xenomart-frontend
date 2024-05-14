@@ -1,50 +1,89 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { useUser } from "@clerk/nextjs";
-import { WishlistContext } from "../_context/CartContext";
-
+import { WishlistContext } from "../_context/Context";
+import { MdDelete } from "react-icons/md";
+import Link from "next/link";
+import SkeltonAddCard from "../_components/SkeltonAddCard";
 
 const Wishlist = () => {
-  const {wishlist, setWishlist} = useContext(WishlistContext);
-
+  const { wishlist, setWishlist } = useContext(WishlistContext);
   const user = useUser();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getWishList_();
-  },[]);
+    if (user?.user?.primaryEmailAddress?.emailAddress) {
+      getWishList(user.user.primaryEmailAddress.emailAddress);
+    }
+  }, [user]);
 
-  console.log("wishlist---------", wishlist);
-
-  const getWishList_ = () => {
-    debugger
-    GlobalApi.getToWishList(user?.user?.primaryEmailAddress?.emailAddress).then((res) => {
-      const result = res?.data?.data;
-
-      setWishlist([]);
-      if (result.length > 0) {
-        result.forEach((prdct) => {
-          setWishlist((wishlist) => [
-            ...wishlist,
-            {
+  const getWishList = (email) => {
+    GlobalApi.getToWishList(email)
+      .then((res) => {
+        const result = res?.data?.data;
+        if (result && result.length > 0) {
+          setWishlist(
+            result.map((prdct) => ({
               id: prdct.id,
               product: prdct?.attributes?.product?.data,
-            },
-          ]);
-        });
-      }
-    });
+            }))
+          );
+        } else {
+          setWishlist([]);
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching wishlist:", error);
+        setLoading(false);
+      });
   };
 
+  function deletWishListItem_(id) {
+    GlobalApi.deleteToWishList(id).then(
+      (res) => {
+        if (res) getWishList();
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
+
+  if (loading) {
+    return <SkeltonAddCard/>;
+  }
+
   return (
-    <div className="flex container m-4">
-      {
-        wishlist.map((item)=>{
-          return <div className="shirt-section bg-white px-5 py-4 my-5">
-            <h2>{item.title}</h2>
+    <div className="section m-2 p-4">
+      <div className="wishlist-section bg-white shadow-white grid grid-cols-12">
+        {wishlist.map((item, index) => (
+          <div
+            className="shirt-section border col-span-6 lg:col-span-12 md:col-span-12 p-3 lg:px-5  lg:py-4 flex h-[8rem] lg:h-[10rem]"
+            key={index}
+          >
+            <Link
+              href="#"
+              className="card grid grid-rows-1 grid-cols-12 w-full"
+            >
+              <div className="bannerImg col-span-3 lg:col-span-1">
+                <img
+                  className="h-full w-full"
+                  src={item.product.attributes.banner.data.attributes.url}
+                  alt=""
+                />
+              </div>
+              <div className="content hover:text-blue-500 p-2 pt-0 lg:p-4 lg:ps-6 col-span-9 lg:col-span-11">
+                <h2>{item.product.attributes.title}</h2>
+              </div>
+            </Link>
+            <div className="flex justify-end text-xl  lg:text-2xl cursor-pointer hover:text-red-600" onClick={()=> deletWishListItem_(item.id)}>
+              <MdDelete />
+            </div>
           </div>
-        })
-      }
+        ))}
+      </div>
     </div>
   );
 };

@@ -23,10 +23,13 @@ const ProjectDetail = ({ params }) => {
   }, [productData]);
 
   const getProductById_ = () => {
-    GlobalApi.getProductById(params?.projectId).then((resp) => {
+    const productId_ = params?.projectId;
+    GlobalApi.getProductById(productId_).then((resp) => {
       setProductData(resp.data.data);
     });
   };
+debugger
+  console.log(productData);
 
   const productListByCategory = (productData) => {
     const category = productData?.attributes?.category;
@@ -36,16 +39,18 @@ const ProjectDetail = ({ params }) => {
   };
 
   return (
-    <div className="p-5 py-10 px-10 md:px-28">
-      <Breadcrumbs path={path} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-5 sm:gap-10">
-        <ProjectBanner project={productData} />
-        <ProjectInfo product={productData} />
+    <div className="p-5 py-10 md:py-2 px-10 md:px-2">
+      <div className="bg-white">
+        <Breadcrumbs path={path} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:p-14 sm:gap-10 bg-white shadow-sm">
+          <ProjectBanner project={productData} />
+          <ProjectInfo product={productData} />
+        </div>
       </div>
 
       {productList && (
-        <div className="mt-20">
-          <h2 className="font-medium text-[20px] mt-5">Similer Products</h2>
+        <div className="bg-white shadow-sm px-2 mt-2">
+          <h2 className="font-bold text-[20px] p-4">Similer Products</h2>
           <ProductList productList={productList} />
         </div>
       )}

@@ -4,7 +4,7 @@ import React from "react";
 const Breadcrumbs = ({ path }) => {
   return (
     path && (
-      <nav aria-label="Breadcrumb">
+      <nav aria-label="Breadcrumb" className="p-5 ps-8">
         <ol className="flex items-center gap-1 text-sm text-gray-600">
           <li>
             <Link href="/" className="block transition hover:text-gray-700">

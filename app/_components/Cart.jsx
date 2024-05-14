@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { CartContext } from "../_context/CartContext";
+import { CartContext } from "../_context/Context";
 import Link from "next/link";
 
 const Cart = () => {

@@ -3,7 +3,7 @@ import ProductItem from "./ProductItem";
 
 const ProductList = ({ productList }) => {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 p-4">
       {productList.map(
         (item, index) =>
           index <= 5 && (

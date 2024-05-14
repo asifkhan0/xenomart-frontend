@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { FaRegHeart } from "react-icons/fa";
-import { CartContext } from "../_context/CartContext";
+import { CartContext } from "../_context/Context";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import logo from "../../public/xenoMartLogo2.png";
 import Cart from "./Cart";
@@ -56,7 +56,7 @@ const Header = () => {
 
   return (
     !isLogin && (
-      <header className="bg-white">
+      <header className="bg-white" id="headerSec">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 shadow-sm">
           <div className="flex h-16 items-center justify-between">
             <div className="md:flex md:items-center md:gap-12">
@@ -78,21 +78,21 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a
+                    <Link
                       className="text-gray-500 transition hover:text-gray-500/75"
                       href="#"
                     >
-                      Explore
-                    </a>
+                      Men
+                    </Link>
                   </li>
 
                   <li>
-                    <a
+                    <Link
                       className="text-gray-500 transition hover:text-gray-500/75"
                       href="#"
                     >
-                      Projects
-                    </a>
+                     Women
+                    </Link>
                   </li>
 
                   <li>
@@ -101,15 +101,6 @@ const Header = () => {
                       href="#"
                     >
                       About us
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      Contact us
                     </a>
                   </li>
                 </ul>
@@ -175,6 +166,18 @@ const Header = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="category-list bg-primaryCustom px-10 py-2">
+          <ul className="flex gap-10 text-white capitalize">
+            <li className="hover:text-secondaryCustom"><a href="#">Men</a></li>
+            <li className="hover:text-secondaryCustom"><a href="#">Women</a></li>
+            <li className="hover:text-secondaryCustom"><a href="#">Jeans</a></li>
+            <li className="hover:text-secondaryCustom"><a href="#">pant</a></li>
+            <li className="hover:text-secondaryCustom"><a href="#">t-shirt</a></li>
+            <li className="hover:text-secondaryCustom"><a href="#">shirt</a></li>
+            <li className="hover:text-secondaryCustom"><a href="#">Trending</a></li>
+            <li className="hover:text-secondaryCustom"><a href="#">offer</a></li>
+          </ul>
         </div>
       </header>
     )

@@ -3,7 +3,7 @@ import React from "react";
 
 const ProjectBanner = ({ project }) => {
   return (
-    <div className="w-full">
+    <div className="w-full flex justify-center">
       {project ? (
         <Image
           src={project?.attributes?.banner?.data?.attributes?.url}

@@ -3,13 +3,18 @@ import logo from "../../public/xenoMartLogo2.png";
 import Image from "next/image";
 
 const Footer = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-gray-100">
       <div className="relative mx-auto max-w-screen-xl px-4 py-4 sm:px-6 lg:px-8 lg:pt-12">
         <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
-          <a
+          <button
             className="inline-block rounded-full bg-[#F49404] p-2 text-white shadow transition hover:bg-[#f49404c9] sm:p-3 lg:p-4"
-            href="#MainContent"
+            onClick={scrollToTop}
           >
             <span className="sr-only">Back to top</span>
 
@@ -25,7 +30,7 @@ const Footer = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </button>
         </div>
 
         <div className="lg:flex lg:items-end lg:justify-between">
@@ -34,20 +39,19 @@ const Footer = () => {
               <Image src={logo} width={220} height={180} alt="logo" />
             </div>
 
-            <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 lg:text-left">
+            {/* <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 lg:text-left">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
               consequuntur amet culpa cum itaque neque.
-            </p>
+            </p> */}
           </div>
 
-          <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
+          {/* <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
             <li>
               <a
                 className="text-gray-700 transition hover:text-gray-700/75"
                 href="#"
               >
-                {" "}
-                About{" "}
+                About
               </a>
             </li>
 
@@ -56,8 +60,7 @@ const Footer = () => {
                 className="text-gray-700 transition hover:text-gray-700/75"
                 href="#"
               >
-                {" "}
-                Services{" "}
+                Services
               </a>
             </li>
 
@@ -66,25 +69,14 @@ const Footer = () => {
                 className="text-gray-700 transition hover:text-gray-700/75"
                 href="#"
               >
-                {" "}
-                Projects{" "}
+                Projects
               </a>
             </li>
-
-            <li>
-              <a
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="#"
-              >
-                {" "}
-                Blog{" "}
-              </a>
-            </li>
-          </ul>
+          </ul> */}
         </div>
 
-        <p className="mt-12 text-center text-sm text-gray-500 lg:text-right">
-          Copyright &copy; 2022. All rights reserved.
+        <p className="mt-6 text-center text-sm text-gray-500 lg:text-right">
+          Copyright &copy; 2024. All rights reserved.
         </p>
       </div>
     </footer>

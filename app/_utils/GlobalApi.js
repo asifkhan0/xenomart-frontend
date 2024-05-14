@@ -1,7 +1,6 @@
 const axios = require("axios");
 let apikey = process.env.NEXT_PUBLIC_REST_API_KEY;
-console.log(apikey);
-const apiUrl = "http://localhost:1337/api";
+const apiUrl = "https://xenomart-backend.onrender.com/api";
 
 const axiosClient = axios.create({
   baseURL: apiUrl,
