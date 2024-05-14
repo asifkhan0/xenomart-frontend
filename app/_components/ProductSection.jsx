@@ -31,6 +31,13 @@ const ProductSection = () => {
     return result;
   };
 
+  const newCollection_ = (collectionType) => {
+    const result = productList.filter(
+      (item) => item.attributes.collectionType == collectionType
+    );
+    return result;
+  }
+
   const viewAllCollection = (collectionTitle) => {
     router.push(`/products/${collectionTitle}`);
   };
@@ -45,7 +52,7 @@ const ProductSection = () => {
             New Arrival
             <span
               className="font-bold float-right text-[14px] flex text-secondaryCustom hover:text-[#f49404c9] cursor-pointer items-center"
-              onClick={() => viewAllCollection("new arrival")}
+              onClick={() => newCollection_("new arrival")}
             >
               View All Collection
               <FaArrowRight className="h-4 ms-2" />
