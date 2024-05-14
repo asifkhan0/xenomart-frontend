@@ -29,7 +29,7 @@ const calculateDiscountPercentage = (originalPrice, discountedPrice=1) => {
               <h4 className="brand-title text-[12px] font-bold text-gray-500 uppercase">
                 {product?.attributes?.brand}
               </h4>
-              <h2 className="title text-sm font-normal group-hover:text-blue-700 group-hover:underline line-clamp-2">
+              <h2 className="title text-sm font-normal text-black group-hover:text-blue-700 group-hover:underline line-clamp-2">
                 {product?.attributes?.title}
               </h2>
               <div className="price-section font-medium">

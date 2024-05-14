@@ -104,8 +104,8 @@ const ProjectInfo = ({ product }) => {
           <h4 className="brand-title text-lg font-bold text-gray-500 uppercase">
             {product?.attributes?.brand}
           </h4>
-          <div className="text-2xl">{product?.attributes?.title}</div>
-          <div className="flex items-center">
+          <div className="text-2xl text-black">{product?.attributes?.title}</div>
+          <div className="flex items-center text-black">
           Category: <span className="text-gray-400 uppercase ms-3">{product?.attributes?.category}</span>
           </div>
           <div className="rating-section"><StarRating rating={product?.attributes?.rating} /></div>
