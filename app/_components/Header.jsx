@@ -65,49 +65,6 @@ const Header = () => {
                 <Image src={logo} width={180} height={120} alt="logo" />
               </Link>
             </div>
-
-            <div className="hidden md:block">
-              <nav aria-label="Global">
-                <ul className="flex items-center gap-6 text-sm">
-                  <li>
-                    <Link
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="/"
-                    >
-                      Home
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      Men
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                     Women
-                    </Link>
-                  </li>
-
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      About us
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
             <div className="flex items-center gap-4">
               {!user ? (
                 <div className="sm:flex sm:gap-4">
