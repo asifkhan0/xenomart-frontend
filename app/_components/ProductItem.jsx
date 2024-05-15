@@ -18,7 +18,7 @@ const ProductItem = ({ product }) => {
     <Link href={"/project-detail/" + product.id}>
       <div className="cursor-pointer relative hover:shadow-lg max-h-[24.5rem] overflow-hidden">
         {product?.attributes?.collectionType.includes("new arrival") && (
-          <span class="item_badge absolute text-[10px] z-999 capitalize top-3 right-3 flex items-center px-2 py-1 bg-green-200 rounded-full font-semibold text-green-600">
+          <span className="item_badge absolute text-[10px] z-999 capitalize top-3 right-3 flex items-center px-2 py-1 bg-green-200 rounded-full font-semibold text-green-600">
             new arrival
           </span>
         )}
