@@ -1,6 +1,7 @@
 const axios = require("axios");
 let apikey = process.env.NEXT_PUBLIC_REST_API_KEY;
 const apiUrl = "https://xenomart-backend.onrender.com/api";
+// const apiUrl = "http://localhost:1337/api";
 
 const axiosClient = axios.create({
   baseURL: apiUrl,
@@ -9,6 +10,7 @@ const axiosClient = axios.create({
   },
 });
 
+const getProductByCategoryName = () => axiosClient.get("/products?filters[categories][name][$in]=men");
 const getLatestProducts = () => axiosClient.get("/products?populate=*");
 const getProductById = (id) => axiosClient.get("/products/" + id + "?populate=*");
 const getProductByCategory = (category) => axiosClient.get("/products?filters[category][$eq]=" + category + "&populate=*");
@@ -21,6 +23,7 @@ const getToWishList = (email) => axiosClient.get("/wishlists?populate[product][p
 const deleteToWishList = (id) => axiosClient.delete("/wishlists/" + id);
 
 module.exports = {
+  getProductByCategoryName,
   getLatestProducts,
   getProductById,
   getProductByCategory,
