@@ -29,6 +29,7 @@ const ProductItem = ({ product }) => {
             width={400}
             height={350}
             className="h-full w-full aspect-[3/4] object-cover"
+            loading="lazy"
           />
           <div className="flex flex-col bg-white group-hover:transform group-hover:-translate-y-9 transition-transform duration-300 ease-in-out">
             <div className="content flex flex-col gap-2 pt-1">

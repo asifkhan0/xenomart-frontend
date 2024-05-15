@@ -12,9 +12,12 @@ const Page = () => {
   const [categoryTitle, setCategoryTitle]  = useState("");
 
   useEffect(() => {
+
     if (!path) return;
     const category = path.split("/").pop();
-    setCategoryTitle(category)
+    
+    setCategoryTitle(decodeURIComponent(category))
+    
     GlobalApi.getProductByCategory(category)
       .then((res) => {
         setFilterProduct(res.data.data);

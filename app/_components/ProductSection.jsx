@@ -13,24 +13,18 @@ const ProductSection = () => {
   const router = useRouter();
   useEffect(() => {
     getLatestProducts_();
-    getCategory()
   }, []);
 
-  const getLatestProducts_ = () => {
-    GlobalApi.getLatestProducts().then((res) => {
+  const getLatestProducts_ = async () => {
+    try {
+      const res = await GlobalApi.getLatestProducts();
       setProductList(res.data.data);
-    }).catch((error)=>{
+    } catch (error) {
       console.error("Error fetching products:", error);
       setError("Error fetching products. Please try again later.");
-    })
+    }
   };
-
-  const getCategory = () => {
-    debugger
-    GlobalApi.getProductByCategoryName().then((res) => {
-      console.log(res.data.data);
-    })
-  };
+  
 
   const filterProductList = (category) => {
     const result = productList.filter(
