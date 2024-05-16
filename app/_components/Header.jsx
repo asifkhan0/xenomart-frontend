@@ -61,7 +61,7 @@ const Header = () => {
               {!user ? (
                 <div className="sm:flex sm:gap-4">
                   <Link
-                    className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white shadow"
+                    className="rounded-md bg-primary hover:text-secondaryCustom px-5 py-2.5 text-sm font-medium text-black shadow"
                     href="/sign-in"
                   >
                     Login
@@ -69,7 +69,7 @@ const Header = () => {
 
                   <div className="hidden sm:flex">
                     <Link
-                      className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-primary"
+                      className="rounded-md hover:text-secondaryCustom px-5 text-black py-2.5 text-sm font-medium text-primary shadow"
                       href="/sign-up"
                     >
                       Register
