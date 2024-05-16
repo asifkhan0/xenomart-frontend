@@ -18,8 +18,6 @@ const Header = () => {
   const [openCart, setOpenCart] = useState(false);
   const { cart, setCart } = useContext(CartContext);
 
-  const router = useRouter();
-
   useEffect(() => {
     setIsLogin(window.location.href.toString().includes("sign-in"));
   }, []);
@@ -30,13 +28,7 @@ const Header = () => {
     }
   }, [user]);
 
-  const handleCart = () => {
-    router.push("/cart");
-  };
-  const wishListHandle = () => {
-    router.push("/wishlist");
-  };
-    const getCartItem = () => {
+  const getCartItem = () => {
     GlobalApi.getUserCartItem(user?.primaryEmailAddress?.emailAddress).then(
       (res) => {
         const result = res?.data?.data;
@@ -51,7 +43,7 @@ const Header = () => {
             ]);
           });
         }
-      },
+      }
     );
   };
 
@@ -86,47 +78,26 @@ const Header = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-6 ">
-                  <FaRegHeart
-                    onClick={wishListHandle}
-                    className="cursor-pointer text-[23px] text-[#263248]"
-                  />
-                  <h2 className="flex cursor-pointer gap-1 relative">
-                    <MdOutlineShoppingCart
-                      onClick={handleCart}
-                      className=" text-[28px] text-[#263248]"
-                    />
-                    <span className="text-white absolute top-[-8px] end-[-4px] flex items-center justify-center rounded-xl w-5 h-5 bg-[#F49404]">
-                      {cart?.length}
-                    </span>
-                  </h2>
+                  <Link href="/wishlist">
+                    <FaRegHeart className="cursor-pointer text-[23px] text-[#263248]" />
+                  </Link>
+                  <Link href="/cart">
+                    <h2 className="flex cursor-pointer gap-1 relative">
+                      <MdOutlineShoppingCart className=" text-[28px] text-[#263248]" />
+                      <span className="text-white absolute top-[-8px] end-[-4px] flex items-center justify-center rounded-xl w-5 h-5 bg-[#F49404]">
+                        {cart?.length}
+                      </span>
+                    </h2>
+                  </Link>
                   <UserButton />
                 </div>
               )}
               {openCart && <Cart />}
-
-              <div className="block md:hidden">
-                <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                </button>
-              </div>
             </div>
           </div>
         </div>
         {/* header list */}
-        <HeaderList/>
+        <HeaderList />
       </header>
     )
   );
