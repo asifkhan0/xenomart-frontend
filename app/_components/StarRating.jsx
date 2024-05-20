@@ -19,7 +19,7 @@ function StarRating({ rating }) {
 
   return (
     <div className="flex items-center gap-1">
-      <span className="me-3">Rating: </span>
+      <span className="me-3 text-black">Rating: </span>
       {renderStars()}
     </div>
   );

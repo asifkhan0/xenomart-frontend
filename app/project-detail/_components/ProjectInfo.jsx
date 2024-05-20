@@ -108,8 +108,8 @@ const ProjectInfo = ({ product }) => {
           <div className="flex items-center text-black">
           Category: <span className="text-gray-400 uppercase ms-3">{product?.attributes?.category}</span>
           </div>
-          <div className="rating-section"><StarRating rating={product?.attributes?.rating} /></div>
-          <h2 className="flex gap-2 items-center">
+          <div className="rating-section text-black"><StarRating rating={product?.attributes?.rating} /></div>
+          <h2 className="flex gap-2 items-center text-black">
             {product?.attributes?.instantDelivery ? (
               <LuBadgeCheck className="text-green-500 text-[22px]" />
             ) : (
