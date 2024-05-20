@@ -40,7 +40,7 @@ const ProductItem = ({ product }) => {
                 {product?.attributes?.title}
               </h2>
               <div className="price-section font-medium">
-                <h2 className="flex lg:gap-3 md:gap-3  text-base flex-col md:flex-row lg:flex-row">
+                <h2 className="flex lg:gap-3 md:gap-3 text-black text-base flex-col md:flex-row lg:flex-row">
                   Rs. {product.attributes?.offerPrice}
                   {product.attributes?.offerPrice && (
                     <span className="text-green-600">
@@ -66,7 +66,7 @@ const ProductItem = ({ product }) => {
                 )}
                 {/* if rating contain value then render */}
                 {product.attributes?.rating && (
-                  <span className="flex text-sm items-center gap-1">
+                  <span className="flex text-sm text-black items-center gap-1">
                     <FaStar className="text-yellow-400" />
                     {product.attributes?.rating}
                   </span>
