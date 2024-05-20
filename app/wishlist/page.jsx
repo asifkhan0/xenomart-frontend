@@ -83,12 +83,12 @@ const Wishlist = () => {
                     {item.product.attributes.brand}
                   </div>
                   <div className="content hover:text-blue-500 hover:underline">
-                    <h2>{item.product.attributes.title}</h2>
+                    <h2 className="text-black">{item.product.attributes.title}</h2>
                   </div>
                   <div className="item_rating lg:block hidden">
                     <StarRating rating={item.product.attributes.rating} />
                   </div>
-                  <div className="item_price">
+                  <div className="item_price text-black">
                     Rs. {item.product.attributes.price}
                   </div>
                 </div>
