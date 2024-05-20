@@ -29,7 +29,12 @@ const Hero = () => {
               <div className="embla__slide flex-grow flex-shrink-0 w-full min-w-0">
               <img
                 src={item.attributes?.hero_banner?.data?.attributes?.url}
-                className="w-full h-fit"
+                className="w-full h-fit hidden md:block lg:block"
+                loading="lazy"
+              />
+              <img
+                src={item.attributes?.mobile_banner?.data?.attributes?.url}
+                className="w-full h-fit block md:hidden lg:hidden aspect-[4/5]"
                 loading="lazy"
               />
             </div>
