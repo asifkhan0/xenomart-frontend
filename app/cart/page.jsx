@@ -4,6 +4,8 @@ import { CartContext } from "../_context/Context";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { useUser } from "@clerk/nextjs";
 import StarRating from "../_components/StarRating";
+import Link from "next/link";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -157,12 +159,13 @@ const Cart = () => {
                 </div> */}
 
                 <div className="flex justify-end">
-                  <a
-                    href="#"
+                  <Link
+                    href="/checkout"
                     className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+                    onClick={checkoutPayment}
                   >
                     Checkout
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

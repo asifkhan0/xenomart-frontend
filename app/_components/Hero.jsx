@@ -25,8 +25,8 @@ const Hero = () => {
       <div className="embla overflow-hidden" ref={emblaRef}>
         <div className="embla__container flex">
           {
-            banners.map(item => (
-              <div className="embla__slide flex-grow flex-shrink-0 w-full min-w-0">
+            banners.map((item,index) => (
+              <div key={index} className="embla__slide flex-grow flex-shrink-0 w-full min-w-0">
               {item.attributes?.hero_banner?.data?.attributes?.url && <img
                 src={item.attributes?.hero_banner?.data?.attributes?.url}
                 className="w-full h-fit hidden md:block lg:block"

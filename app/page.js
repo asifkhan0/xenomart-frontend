@@ -1,12 +1,16 @@
+import { Suspense, lazy } from "react";
 import { ToastContainer } from "react-toastify";
-import Hero from "./_components/Hero";
-import ProductSection from "./_components/ProductSection";
+
+const Hero = lazy(() => import("./_components/Hero"));
+const ProductSection = lazy(() => import("./_components/ProductSection"));
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <ProductSection />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Hero />
+        <ProductSection />
+      </Suspense>
       <ToastContainer />
     </>
   );
